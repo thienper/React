@@ -13,25 +13,38 @@ class MyComponent extends React.Component {
     }
     handleAddNewUser = (userObject) => {
         // Them 1 user vao state
-        console.log("user them:", userObject)
         this.setState({
             listUsers: [userObject, ...this.state.listUsers]
 
         })
     }
+    removeUser = (userId) => {
+        let listUsersClone = this.state.listUsers;
+        listUsersClone = listUsersClone.filter(item => item.id != userId)
+        this.setState({ listUsers: listUsersClone })
+
+    }
     // JSX
     render() {
+        const object = {
+            name: "thien",
+            age: 20
+        }
+
         // DRY : don't repeat youseft
         return (
-            <div>
+            <>
+                {/* cach in bien object */}
+                {/* {JSON.stringify(object)} */}
                 <AddUserinfo
                     handleAddNewUser={this.handleAddNewUser}
                 />
                 <DisplayInfo
                     listUsers={this.state.listUsers}
+                    removeUser={this.removeUser}
 
                 />
-            </div>
+            </>
 
         )
     }

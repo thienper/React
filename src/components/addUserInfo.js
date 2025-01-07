@@ -33,6 +33,7 @@ class addUserinfo extends React.Component {
         event.preventDefault();
         console.log("HELLO", this.state.name)
     }
+
     render() {
         return (
             <div>
